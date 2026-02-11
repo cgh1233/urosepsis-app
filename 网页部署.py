@@ -33,7 +33,6 @@ def load_model():
     return joblib.load("model.pkl")
 
 model = load_model()
-explainer = shap.TreeExplainer(model)
 
 # ================== 标题 ==================
 st.title("🩺 Urosepsis Risk Prediction System")
@@ -114,6 +113,7 @@ if st.button("Start Prediction"):
         <strong>Predicted probability of urosepsis: <u>{proba:.2f}%</u></strong>
     </div>
     """, unsafe_allow_html=True)
+
 
 
 
