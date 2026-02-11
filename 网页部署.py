@@ -116,31 +116,4 @@ if st.button("Start Prediction"):
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("---")
-    st.subheader("🔍 Model Explanation (SHAP Force Plot)")
-
-    # 计算 shap_values（旧版兼容方式）
-    shap_values = explainer.shap_values(input_df)
-
-    # 二分类模型情况
-    if isinstance(shap_values, list):
-        # 解释正类 (urosepsis = 1)
-        shap_value = shap_values[1][0]
-        base_value = explainer.expected_value[1]
-    else:
-        # 单输出情况
-        shap_value = shap_values[0]
-        base_value = explainer.expected_value
-
-    # 生成 force plot
-    shap_html = shap.plots.force(
-        base_value,
-        shap_value,
-        input_df.iloc[0],
-        matplotlib=False
-    )
-
-    html_content = f"<head>{shap.getjs()}</head><body>{shap_html.html()}</body>"
-
-    components.html(html_content, height=300)
 
