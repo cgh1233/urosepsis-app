@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import shap
 import joblib
 import streamlit.components.v1 as components
 
@@ -115,5 +114,6 @@ if st.button("Start Prediction"):
         <strong>Predicted probability of urosepsis: <u>{proba:.2f}%</u></strong>
     </div>
     """, unsafe_allow_html=True)
+
 
 
